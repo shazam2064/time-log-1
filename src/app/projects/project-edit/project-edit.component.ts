@@ -87,7 +87,7 @@ export class ProjectEditComponent implements OnInit {
       name: new FormControl(projectName, Validators.required),
       imagePath: new FormControl(projectImagePath, Validators.required),
       description: new FormControl(projectDescription, Validators.required),
-      ingredients: projectTasks
+      tasks: projectTasks
     });
   }
 }

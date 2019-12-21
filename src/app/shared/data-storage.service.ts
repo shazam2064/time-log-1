@@ -27,22 +27,27 @@ export class DataStorageService {
   }
 
   fetchProjects() {
-    return this.http
-      .get<ProjectModel[]>(
-        'https://ng-course-recipe-book-56390.firebaseio.com/recipes.json'
-      )
-      .pipe(
-        map(projects => {
-          return projects.map(project => {
-            return {
-              ...project,
-              ingredients: project.tasks ? project.tasks : []
-            };
-          });
-        }),
-        tap(projects => {
-          this.projectService.setProjects(projects);
-        })
-      );
+    return this.authService.user.pipe(
+      take(1),
+      exhaustMap(user => {
+        return this.http.get<ProjectModel[]>(
+          'https://ng-course-recipe-book-56390.firebaseio.com/recipes.json',
+          {
+            params: new HttpParams().set('auth', user.token)
+          }
+        );
+      }),
+      map(projects => {
+        return projects.map(project => {
+          return {
+            ...project,
+            tasks: project.tasks ? project.tasks : []
+          };
+        });
+      }),
+      tap(projects => {
+        this.projectService.setProjects(projects);
+      })
+    );
   }
 }

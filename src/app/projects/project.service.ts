@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { ProjectModel } from './project.model';
-import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { TaskModel } from '../shared/task.model';
+import { TaskListService } from '../task-list/task-list.service';
 
 @Injectable()
 export class ProjectService {
@@ -11,7 +11,7 @@ export class ProjectService {
 
   private projects: ProjectModel[] = [];
 
-  constructor(private slService: ShoppingListService) {}
+  constructor(private slService: TaskListService) {}
 
   setProjects(projects: ProjectModel[]) {
     this.projects = projects;
@@ -26,7 +26,7 @@ export class ProjectService {
     return this.projects[index];
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+  addIngredientsToShoppingList(ingredients: TaskModel[]) {
     this.slService.addIngredients(ingredients);
   }
 

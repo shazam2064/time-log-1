@@ -7,22 +7,22 @@ import {
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { Ingredient } from '../../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list.service';
+import { TaskModel } from '../../shared/task.model';
+import { TaskListService } from '../task-list.service';
 
 @Component({
-  selector: 'app-shopping-edit',
-  templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.css']
+  selector: 'app-task-edit',
+  templateUrl: './task-edit.component.html',
+  styleUrls: ['./task-edit.component.css']
 })
-export class ShoppingEditComponent implements OnInit, OnDestroy {
+export class TaskEditComponent implements OnInit, OnDestroy {
   @ViewChild('f', { static: false }) slForm: NgForm;
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
-  editedItem: Ingredient;
+  editedItem: TaskModel;
 
-  constructor(private slService: ShoppingListService) { }
+  constructor(private slService: TaskListService) { }
 
   ngOnInit() {
     this.subscription = this.slService.startedEditing
@@ -41,7 +41,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm) {
     const value = form.value;
-    const newIngredient = new Ingredient(value.name, value.amount);
+    const newIngredient = new TaskModel(value.name, value.amount);
     if (this.editMode) {
       this.slService.updateIngredient(this.editedItemIndex, newIngredient);
     } else {

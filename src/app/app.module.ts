@@ -9,10 +9,10 @@ import { ProjectComponent } from './projects/project.component';
 import { ProjectListComponent } from './projects/project-list/project-list.component';
 import { ProjectDetailComponent } from './projects/projects-detail/project-detail.component';
 import { ProjectItemComponent } from './projects/project-list/project-item/project-item.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskEditComponent } from './task-list/task-edit/task-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { TaskListService } from './task-list/task-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { ProjectStartComponent } from './projects/project-start/project-start.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
@@ -29,8 +29,8 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     ProjectListComponent,
     ProjectDetailComponent,
     ProjectItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
+    TaskListComponent,
+    TaskEditComponent,
     DropdownDirective,
     ProjectStartComponent,
     ProjectEditComponent,
@@ -45,7 +45,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     AppRoutingModule
   ],
   providers: [
-    ShoppingListService,
+    TaskListService,
     ProjectService,
     {
       provide: HTTP_INTERCEPTORS,

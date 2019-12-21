@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectComponent } from './projects/project.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { TaskListComponent } from './task-list/task-list.component';
 import { ProjectStartComponent } from './projects/project-start/project-start.component';
 import { ProjectDetailComponent } from './projects/projects-detail/project-detail.component';
 import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
@@ -11,7 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/projects', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
   {
     path: 'projects',
     component: ProjectComponent,
@@ -31,7 +31,7 @@ const appRoutes: Routes = [
       }
     ]
   },
-  { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'shopping-list', component: TaskListComponent },
   { path: 'auth', component: AuthComponent }
 ];
 
