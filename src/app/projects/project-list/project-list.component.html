@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewProject()">New Project</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-project-item
+      *ngFor="let recipeEl of projectModels; let i = index"
+      [projectModel]="recipeEl"
+      [index]="i"></app-project-item>
+  </div>
+</div>
+
