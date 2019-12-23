@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { catchError, tap } from 'rxjs/operators';
+import {catchError, last, tap} from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 
 import { User } from './user.model';
@@ -10,6 +10,8 @@ export interface AuthResponseData {
   kind: string;
   idToken: string;
   email: string;
+  firstName: string;
+  lastName: string;
   refreshToken: string;
   expiresIn: string;
   localId: string;
@@ -23,13 +25,15 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  signup(email: string, password: string) {
+  signup(email: string, password: string, firstName: string, lastName: string) {
     return this.http
       .post<AuthResponseData>(
         'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyBNTBZxK1KrniXKVNTA9aSOort8DJeFwSM',
         {
           email: email,
           password: password,
+          firstName: firstName,
+          lastName: lastName,
           returnSecureToken: true
         }
       )

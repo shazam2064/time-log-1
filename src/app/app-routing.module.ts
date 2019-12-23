@@ -9,6 +9,7 @@ import { ProjectEditComponent } from './projects/project-edit/project-edit.compo
 import { ProjectResolverService } from './projects/project-resolver.service';
 import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
+import {UsersComponent} from "./users/users.component";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' },
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'shopping-list', component: TaskListComponent },
-  { path: 'auth', component: AuthComponent }
+  { path: 'auth', component: AuthComponent },
+  { path: 'users', component: UsersComponent }
 ];
 
 @NgModule({

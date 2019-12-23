@@ -26,6 +26,8 @@ export class AuthComponent {
     }
     const email = form.value.email;
     const password = form.value.password;
+    const firstName = form.value.firstName;
+    const lastName = form.value.lastName;
 
     let authObs: Observable<AuthResponseData>;
 
@@ -34,7 +36,7 @@ export class AuthComponent {
     if (this.isLoginMode) {
       authObs = this.authService.login(email, password);
     } else {
-      authObs = this.authService.signup(email, password);
+      authObs = this.authService.signup(email, password, firstName, lastName);
     }
 
     authObs.subscribe(
